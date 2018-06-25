@@ -39,7 +39,7 @@ public class Talk {
     @Size(min = 5)
     private String title;
 
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, scope = Speaker.class, property = "id", resolver = JPAResolver.class)
+    @JsonIdentityInfo(resolver = JPAResolver.class, generator = ObjectIdGenerators.PropertyGenerator.class, scope = Speaker.class, property = "id")
     @JsonIdentityReference(alwaysAsId = true)
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Speaker> speakers = new ArrayList<>();

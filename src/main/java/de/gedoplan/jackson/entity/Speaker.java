@@ -21,13 +21,16 @@ public class Speaker {
 
     public static final String TABLE_NAME = "RS_SPEAKER";
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    
     private String firstname;
 
     private String lastname;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @ManyToMany(mappedBy = "speakers", fetch = FetchType.EAGER)
+    private List<Talk> talks;
 
     protected Speaker() {
     }
@@ -37,8 +40,6 @@ public class Speaker {
         this.lastname = lastname;
     }
 
-    @ManyToMany(mappedBy = "speakers", fetch = FetchType.EAGER)
-    private List<Talk> talks;
 
     public String getFirstname() {
         return firstname;
