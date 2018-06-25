@@ -34,7 +34,7 @@ public class JPAResolver extends SimpleObjectIdResolver {
     }
 
     private Object loadFromDatabase(IdKey idKey) {
-        return this.em.find(idKey.scope, idKey.key);
+        return this.em.getReference(idKey.scope, idKey.key);
     }
 
     @Override
